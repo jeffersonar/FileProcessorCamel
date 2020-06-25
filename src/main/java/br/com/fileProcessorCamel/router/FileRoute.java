@@ -27,7 +27,7 @@ public class FileRoute extends RouteBuilder  {
      */
     @Override
     public void configure() throws Exception {
-        from("file:".concat(fileService.getInPath()).concat("?include=.*txt&charset=utf-8&delay=5&noop=true"))
+        from("file:".concat(fileService.getInPath()).concat("?include=.*dat&charset=utf-8&delay=5&noop=true"))
                 .process(fileProcessor)
                 .log("Camel body: ${body}")
                 .setHeader(Exchange.FILE_NAME,simple("${file:name.noext}.done.dat"))
